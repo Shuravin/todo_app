@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/b9387f8d9f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="main">
+      <div class="main-block">
+        <h1>To Do App</h1>
+        <div class="horline"></div>
+        <div class="input-field">
+          <form>
+            <input type="text" name="text" id="text" />
+            <div class="buttons">
+              <button class="submit">Add to list</button>
+              <button type="reset" class="clear">Clear field</button>
+            </div>
+          </form>
+        </div>
+        <div class="horline"></div>
+        <div class="items">
+          <ul class="items__lists">
+
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="overlay hidden"></div>
+        <div class="alarm">
+            <p>Are you sure you want delete this item permanently?</p>
+            <div class="buttons">
+                <button class="submit misclick">No, I misclicked</button>
+                  <button class="clear fulldelete">Yes, delete item</button>
+                </div>
+            </div>
+    </div>
+    
+    <script src="app.js"></script>
+  </body>
+</html>
