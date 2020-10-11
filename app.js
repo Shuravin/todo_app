@@ -17,6 +17,9 @@ function renderElements(source) {
     const newP = document.createElement("p");
     newLi.appendChild(newP);
 
+    // // Make new p editable
+    // newP.setAttribute("contenteditable", "true")
+
     // Add text inside new p element
     newP.innerHTML = source;
 
@@ -70,6 +73,26 @@ window.addEventListener("load", () => {
 
     // Hide ul if list is empty
     ulVisibility();
+
+    // // =========== Make List Items Editable ===========
+    // // Create confirm edition button
+    // const lists = document.querySelectorAll(".items__list-item");
+    // const listsArray = Array.from(lists);
+    // console.log(listsArray)
+    // listsArray.forEach(list => {
+    //     list.addEventListener("click", () => {
+    //         const confirm = document.createElement("a");
+    //         confirm.setAttribute("href", "#");
+    //         const icon = document.createElement("i");
+    //         icon.classList.add("fas", "fa-check-circle");
+    //         confirm.appendChild(icon);
+    //         confirm.classList.add("confirm")
+
+    //         // Append new confirm button after editable p
+    //         list.firstElementChild.after(confirm)
+    //         console.log("success")
+    //     })
+    // })
 })
 
 
@@ -143,9 +166,5 @@ document.addEventListener("click", (e) => {
             // Hide ul if list is empty
             ulVisibility();
         })
-    } else {
-        console.log(e)
     }
 })
-
-// =========== Make List Items Editable ===========

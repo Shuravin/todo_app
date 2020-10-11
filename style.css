@@ -153,6 +153,20 @@ h1 {
   transform: scale(1.2);
 }
 
+/* Styling of editable p */
+.items .items__list-item p:focus {
+  outline: none;
+  border: 1px solid #515070;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+// /* Confirm button */
+// .confirm {
+//   color: lightgreen;
+//   margin-left: 1rem;
+// }
+
 /* Alarm window */
 .overlay {
   content: "";
@@ -194,6 +208,7 @@ h1 {
   display: none;
 }
 
+/* =========== MEDIA QUERIES =========== */
 @media (max-width: 768px) {
   .input-field form input {
     width: 60vw;
