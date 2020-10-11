@@ -81,7 +81,7 @@ h1 {
   margin-bottom: 2rem;
 }
 
-.buttons button {
+button {
   display: block;
   border: none;
   border-radius: 0.5rem;
@@ -105,13 +105,35 @@ h1 {
   color: #fff;
 }
 
-.buttons .clear {
+.clear {
   background: lightsalmon;
   color: #000;
   transition: all 0.2s ease;
 }
 
 .clear:hover {
+  background: darkred;
+  color: #fff;
+}
+
+/* Delete All Button */
+.deleteall {
+  display: inline-block;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0.8rem 2rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: lightsalmon;
+  color: #000;
+  transition: all 0.2s ease;
+  margin: 0 auto 2rem;
+}
+
+.deleteall:hover {
   background: darkred;
   color: #fff;
 }
@@ -160,12 +182,6 @@ h1 {
   border-radius: 1rem;
   padding: 0.5rem 1rem;
 }
-
-// /* Confirm button */
-// .confirm {
-//   color: lightgreen;
-//   margin-left: 1rem;
-// }
 
 /* Alarm window */
 .overlay {

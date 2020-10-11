@@ -43,10 +43,13 @@ function renderElements(source) {
 // Hide items block if it's empty and show when new list items added
 function ulVisibility() {
     const itemsBlock = document.querySelector(".items")
+    const deleteall = document.querySelector(".deleteall");
     if (itemsBlock.firstElementChild.childElementCount == 0) {
         itemsBlock.classList.add("hidden")
+        deleteall.classList.add("hidden")
     } else {
         itemsBlock.classList.remove("hidden")
+        deleteall.classList.remove("hidden")
     }
 }
 
@@ -71,7 +74,7 @@ window.addEventListener("load", () => {
         targetItem.setAttribute("data-key", key)
     }
 
-    // Hide ul if list is empty
+    // Hide ul and delete all button if list is empty
     ulVisibility();
 
     // // =========== Make List Items Editable ===========
@@ -93,36 +96,6 @@ window.addEventListener("load", () => {
     //         console.log("success")
     //     })
     // })
-})
-
-
-// =========== Add new item to the list ===========
-submit.addEventListener("click", (e) => {
-    e.preventDefault();
-    const inputText = input.value;
-
-    // Append new element through master render function
-    renderElements(inputText);
-
-    // Add new task to local storage
-    // How many lis in ul currently?
-    const lisCount = document.querySelector(".items__lists").childElementCount;
-
-    // Select text content of new li
-    const newValue = document.querySelector(".items__lists").lastElementChild.firstElementChild.innerHTML;
-
-    // Check items list visibility
-    ulVisibility();
-
-    // Add new item in local storage
-    localStorage.setItem(`${lisCount}`, newValue)
-
-    // Add data-key to new list item
-    // // Adding this number in the data-key attribute
-    document.querySelector(".items__lists").lastElementChild.setAttribute("data-key", lisCount)
-
-    // Clear input field after submitting
-    input.value = ''
 })
 
 
@@ -167,4 +140,92 @@ document.addEventListener("click", (e) => {
             ulVisibility();
         })
     }
+})
+
+
+
+// =========== Add new item to the list ===========
+submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const inputText = input.value;
+
+    // Append new element through master render function
+    renderElements(inputText);
+
+    // Add new task to local storage
+    // How many lis in ul currently?
+    const lisCount = document.querySelector(".items__lists").childElementCount;
+
+    // Select text content of new li
+    const newValue = document.querySelector(".items__lists").lastElementChild.firstElementChild.innerHTML;
+
+    // Check items list visibility
+    ulVisibility();
+
+    // Add new item in local storage
+    localStorage.setItem(`${lisCount}`, newValue)
+
+    // Add data-key to new list item
+    // Get data-id from previous sibling
+    let prevId = document.querySelector(".items__lists").lastElementChild.previousElementSibling;
+    if (!prevId) {
+        prevId = 0;
+    } else {
+        prevId = prevId.getAttribute("data-key");
+    };
+    prevId = parseInt(prevId);
+    console.log(prevId)
+    // // Adding this number in the data-key attribute
+    document.querySelector(".items__lists").lastElementChild.setAttribute("data-key", prevId+= 1)
+
+    // Clear input field after submitting
+    input.value = ''
+})
+
+
+// =========== Clear Input Field ===========
+const clear = document.querySelector(".clear").addEventListener("click", () => {
+    input.value = ''
+})
+
+
+// =========== Delete All ===========
+document.querySelector(".deleteall").addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Show confirmation window
+    // Show confirmation alert
+    const overlay = document.querySelector(".overlay");
+    const alarm = document.querySelector(".alarm");
+
+    overlay.classList.remove("hidden")
+    alarm.classList.remove("hidden")
+
+    // Alert window buttons
+    const misclick = document.querySelector(".misclick");
+    const fulldelete = document.querySelector(".fulldelete");
+
+    // If user misclicked
+    misclick.addEventListener("click", () => {
+        overlay.classList.add("hidden")
+        alarm.classList.add("hidden")
+    })
+
+    // If user confirm deletion
+    fulldelete.addEventListener("click", () => {
+        // Hide alarm window
+        overlay.classList.add("hidden")
+        alarm.classList.add("hidden")
+
+        // Clear local storage
+        localStorage.clear();
+        
+        // Remove all items from list
+        document.querySelectorAll(".items__list-item").forEach(item => {
+            item.remove()
+        })
+
+        // Hide ul if list is empty
+        ulVisibility();
+    })
 })
