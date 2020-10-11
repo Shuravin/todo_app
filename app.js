@@ -113,7 +113,7 @@ document.addEventListener("click", (e) => {
         const alarm = document.querySelector(".alarm");
     
         overlay.classList.remove("hidden")
-        alarm.classList.add("down")
+        alarm.classList.remove("hidden")
 
         // Alert window buttons
         const misclick = document.querySelector(".misclick");
@@ -122,14 +122,14 @@ document.addEventListener("click", (e) => {
         // If user misclicked
         misclick.addEventListener("click", () => {
             overlay.classList.add("hidden")
-            alarm.classList.remove("down")
+            alarm.classList.add("hidden")
         })
 
         // If user confirm deletion
         fulldelete.addEventListener("click", () => {
             // Hide alarm window
             overlay.classList.add("hidden")
-            alarm.classList.remove("down")
+            alarm.classList.add("hidden")
 
             // Remove item from local storage
             // // Get data-key of current li

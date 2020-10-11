@@ -132,7 +132,9 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: left;
   justify-content: space-between;
+  flex-wrap: nowrap;
   padding: 1rem 2rem 0.2rem;
 }
 
@@ -143,6 +145,7 @@ h1 {
 .items .items__list-item .delete {
   color: salmon;
   transition: transform 0.1s ease;
+  margin-left: 0.5rem;
 }
 
 .items .items__list-item .delete:hover {
@@ -172,13 +175,7 @@ h1 {
   background: #ffefa0;
   padding: 1rem;
   border-radius: 1rem;
-  transform: translate(-50%, -100vh);
-  transition: all 0.2s ease;
-}
-
-.alarm.down {
-  transform: translate(-50%, 0);
-  transition: all 0.2s ease;
+  transform: translateX(-50%);
 }
 
 .alarm p {
@@ -197,9 +194,32 @@ h1 {
   display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .input-field form input {
     width: 60vw;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: auto;
+  }
+
+  .buttons .clear {
+    margin-bottom: 1rem;
+  }
+
+  .items .items__list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem 2rem 0.2rem;
   }
 
   .alarm .buttons {
@@ -212,8 +232,53 @@ h1 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 375px) {
+  body {
+    font-size: 100%;
+  }
+
+  .main .main-block h1 {
+    font-size: 2rem;
+  }
+
   .input-field form input {
     width: 60vw;
+    font-size: 1rem;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: auto;
+  }
+
+  .buttons .clear {
+    margin-bottom: 1rem;
+  }
+
+  .alarm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    z-index: 5;
+    text-align: center;
+    background: #ffefa0;
+    padding: 1rem;
+    border-radius: 1rem;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 568px) {
+  body {
+    font-size: 100%;
+  }
+
+  .main-block {
+    margin: 2rem auto 0;
   }
 }
